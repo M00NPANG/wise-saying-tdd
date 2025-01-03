@@ -1,4 +1,3 @@
-import org.example.App;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -36,7 +35,11 @@ public class FirstTest {
     void t4() {
         String out = TestBot.run("""
                 등록
+                현재를 사랑하라.
+                작자미상
                 등록
+                현재를 사랑하라.
+                작자미상
                 종료
                 """);
 
@@ -45,6 +48,7 @@ public class FirstTest {
         // 검증
         assertThat(count).isEqualTo(3); // 기대하는 횟수에 따라 값 수정
     }
+
 
     @Test
     @DisplayName("앱 시작시 '== 명언 앱 ==' 출력")
