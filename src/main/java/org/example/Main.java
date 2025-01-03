@@ -43,7 +43,7 @@ public class Main {
 
         //테스트봇 만들기
 
-        TestApp app = new TestApp();
+        App app = new App();
         app.run();
     }
 }
