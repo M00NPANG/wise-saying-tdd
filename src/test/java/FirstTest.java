@@ -26,7 +26,7 @@ public class FirstTest {
     void t3() {
         String out = TestBot.run("종료");
         assertThat(out)
-                .contains("명령 )")
+                .contains("명령 ) ")
                 .contains("명언앱을 종료합니다.");
 
 
