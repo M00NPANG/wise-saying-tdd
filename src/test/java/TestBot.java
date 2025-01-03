@@ -1,4 +1,4 @@
-import org.example.TestApp;
+import org.example.App;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -13,12 +13,12 @@ public class TestBot {
 
     // 중복되는 부분 따로 처리
     public static String run(String input) {
-        Scanner sc = new Scanner(input + "\n");
+        Scanner sc = new Scanner(input + "종료\n");
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
 
-        TestApp app = new TestApp();
+        App app = new App(sc);
         app.run();
 
         return out.toString();
