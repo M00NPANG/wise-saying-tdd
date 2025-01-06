@@ -2,6 +2,7 @@ package app;
 
 import app.domian.wiseSaying.SystemController;
 import app.domian.wiseSaying.WiseSayingController;
+import app.global.Command;
 
 import java.util.Scanner;
 
@@ -24,15 +25,17 @@ public class App {
             System.out.println("명령 )");
             String cmd = sc.nextLine();
 
+
             // 명령?부가정보 -> 명령, 부가정보
-            String[] cmdBits = cmd.split("\\?");
-            String actionName = cmdBits[0];
+            Command command = new Command(cmd);
+            String actionName = command.getActionName();
+
 
             switch (actionName) {
                 case "종료" -> systemController.exit();
                 case "등록" -> wiseSayingController.actionWrite();
                 case "목록" -> wiseSayingController.actionPrint();
-                case "삭제" -> wiseSayingController.actionDelete(cmd);
+                case "삭제" -> wiseSayingController.actionDelete(command);
 //                case "수정" -> wiseSayingController.actionModify(cmd);
                 default -> System.out.println("올바른 명령이 아닙니다.");
             }
