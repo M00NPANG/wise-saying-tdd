@@ -8,15 +8,36 @@ public class Command {
      */
 
     String actionName;
+    String paramKey;
+    String paramValue;
 
     public Command(String cmd) {
+       // 삭제?id=1
+        // 이름 = 문권이 (Key-Value)
+        String[] cmdBits = cmd.split("\\?");    // [삭제, id=1]
         // split에서 만약 자를게 없으면 자기 자신이 나옴. 그래서 배열의 0번째로 반환.
         // 따라서 0번째에 값이 없을 수 없음
-        String[] cmdBits = cmd.split("\\?");
         actionName = cmdBits[0];
+
+        if(cmdBits.length < 2) {
+            paramValue = "";
+            return;
+        }
+
+        String param = cmdBits[1];
+
+        String[] paramBits = param.split("=");
+        paramKey = paramBits[0];
+        paramValue = paramBits[1];
+
     }
 
     public String getActionName() {
         return actionName;
+    }
+
+    public int getParam() {
+
+        return Integer.parseInt(paramValue);
     }
 }
