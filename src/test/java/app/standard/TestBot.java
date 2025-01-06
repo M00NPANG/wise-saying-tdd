@@ -1,3 +1,7 @@
+package app.standard;
+
+import app.App;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -22,3 +26,11 @@ public class TestBot {
         return out.toString();
     }
 }
+
+// 도메인 -> 앱의 특정 분야
+//  -> 명언 도메인
+//  -> 회원 도메인
+//  -> 판매 도메인
+
+// 일반 -> 도메인 상관 없이 앱 전반적으로 사용
+// 전역 -> 앱 전체의 설정, 도메인 전반적으로 사용
