@@ -1,4 +1,4 @@
-package org.example;
+package app;
 
 import java.io.*;
 import java.util.*;
@@ -43,7 +43,7 @@ public class Main {
 
         //테스트봇 만들기
 //
-//        App app = new App();
+//        app.App app = new app.App();
 //        app.run();
     }
 }
