@@ -7,11 +7,14 @@ public class Command {
      * 2. id 파라미터 제공
      */
 
-    public Command(String cmd) {
+    String actionName;
 
+    public Command(String cmd) {
+        String[] cmdBits = cmd.split("\\?");
+        actionName = cmdBits[0];
     }
 
     public String getActionName() {
-        return "삭제";
+        return actionName;
     }
 }
