@@ -1,5 +1,7 @@
 package app.global;
 
+import java.util.HashMap;
+
 public class Command {
 
     /** 쪼개기 작업
@@ -8,10 +10,12 @@ public class Command {
      */
 
     String actionName;
-    String paramKey;
-    String paramValue;
+    HashMap<String, String>  paramMap;
 
     public Command(String cmd) {
+
+        paramMap = new HashMap<>();
+
         // 삭제?id=1
         // 이름 = 문권이 (Key-Value)
         String[] cmdBits = cmd.split("\\?");    // [삭제, id=1]
@@ -20,22 +24,23 @@ public class Command {
         actionName = cmdBits[0];
 
         if(cmdBits.length < 2) {
-            paramValue = "";
             return;
         }
+        // key1=value1&key2=value2
+        String queryString = cmdBits[1];
+        String[] params = queryString.split("&");
 
-        String param = cmdBits[1];
+        for(String param : params) {
+            // limit은 조각의 최대 개수
+            String[] paramBits = param.split("=",2);
 
+            if(paramBits.length < 2) {
+                continue;
+            }
 
-        // limit은 조각의 최대 개수
-        String[] paramBits = param.split("=",2);
-        paramKey = paramBits[0];
-
-        if(paramBits.length < 2) {
-            return;
+            paramMap.put(paramBits[0], paramBits[1]);
         }
 
-        paramValue = paramBits[1];
 
     }
 
@@ -43,7 +48,8 @@ public class Command {
         return actionName;
     }
 
-    public String getParam() {
-        return paramValue;
+    public String getParam(String key) {
+
+        return paramMap.get(key);
     }
 }
