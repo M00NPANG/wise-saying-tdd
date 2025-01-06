@@ -78,4 +78,17 @@ public class CommandTest {
 
     }
 
+    // keywordType=content & keyword=과거
+    @Test
+    @DisplayName("파라미터가 여러개 있을 때, 파라미터 가져오기, 입력값 : 목록?key1=value1&key2=value2")
+    void t9() {
+        Command cmd = new Command("목록?key1=value1&key2=value2");
+        String param1 = cmd.getParam("key1");
+        String param2 = cmd.getParam("key2");
+
+        assertThat(param1).isEqualTo("value1");
+        assertThat(param2).isEqualTo("value2");
+
+    }
+
 }
