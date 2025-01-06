@@ -3,6 +3,7 @@ package app.domian.wiseSaying;
 import app.global.Command;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class WiseSayingController {
@@ -45,19 +46,26 @@ public class WiseSayingController {
         }
     }
 
-//    public void actionModify(String cmd) {
-//
-//        String param = cmd.split("\\?")[1];
-//        String[] paramBits = param.split("=");
-//        String strId = paramBits[1];
-//        int id = Integer.parseInt(strId);
-//
-//        boolean result = wiseSayingService.modify(id);
-//
-//        if(!result) {
-//            System.out.println("%d번 명언은 존재하지 않습니다.".formatted(id));
-//        }
-//    }
+    public void actionModify(Command cmd) {
+        int id = cmd.getParamAsInt("id");
 
+        Optional<WiseSaying> optionalWiseSaying = wiseSayingService.getItem(id);
+        WiseSaying wiseSaying = optionalWiseSaying.orElse(null);
 
+        if(wiseSaying == null) {
+            System.out.printf("%번 명언은 존재하지 않습니다".formatted(id));
+            return;
+        }
+
+        System.out.printf("명언(기존) : %s\n", wiseSaying.getContent());
+        System.out.print("명언 : ");
+        String newContent = sc.nextLine();
+
+        System.out.printf("작가(기존) : %s\n", wiseSaying.getContent());
+        System.out.print("작가 : ");
+        String newAuthor = sc.nextLine();
+
+        wiseSayingService.modify(wiseSaying, newContent, newAuthor);
+
+    }
 }

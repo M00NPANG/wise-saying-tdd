@@ -1,6 +1,7 @@
 package app.domian.wiseSaying;
 
 import java.util.List;
+import java.util.Optional;
 
 public class WiseSayingService {
 
@@ -22,5 +23,14 @@ public class WiseSayingService {
 
     public boolean delete(int id) {
         return wiseSayingRepository.deleteById(id);
+    }
+
+    public Optional<WiseSaying> getItem(int id) {
+        return wiseSayingRepository.findById(id);
+    }
+
+    public void modify(WiseSaying wiseSaying, String newContent, String newAuthor) {
+       wiseSaying.setContent(newContent);
+       wiseSaying.setAuthor(newAuthor);
     }
 }

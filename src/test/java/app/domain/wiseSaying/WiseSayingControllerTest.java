@@ -185,7 +185,7 @@ public class WiseSayingControllerTest {
 
 
         assertThat(out)
-                .contains("1 / 새 작가 / 새 명언 내용")
-                .doesNotContain("1 / 작자미상 / 현재를 사랑하라.");
+                .contains("2 / 작자미상 / 과거에 집착하지 마라.")
+                .doesNotContain("1 / 새작가 / 현재를 사랑하라.");
     }
 }
