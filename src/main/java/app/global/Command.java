@@ -7,6 +7,11 @@ public class Command {
      * 2. id 파라미터 제공
      */
 
+    public Command(String cmd) {
 
+    }
 
+    public String getActionName() {
+        return "삭제";
+    }
 }
